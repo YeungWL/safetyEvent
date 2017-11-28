@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>安全事件中心</title>
+  <script>
+    document.querySelector("html").style.fontSize = window.screen.width / 100 + "px";
+  </script>
+  <link rel="stylesheet" href="./css/event.css">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/echarts.min.js"></script>
+  <script src="./js/china.js"></script>
+  <!-- 滚动条 -->
+  <link href="./js/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+  <script src="./js/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+</head>
+
+<body class="bg">
+  <header class="header-container">
+    <span class="title"></span>
+    <!-- open是开启 close是关闭 -->
+    <div class="handle">
+      <span>声音：</span>
+      <span class="btn open" id="voice"></span>
+    </div>
+  </header>
+  <div class="main">
+    <div class="statement">
+      <div class="echart-box">
+        <span class="line"></span>
+        <span class="line"></span>
+        <div class="title">可用性地域异常</div>
+        <div class="map-echar" id="map-echar"></div>
+      </div>
+      <div class="echart-box">
+        <span class="line"></span>
+        <span class="line"></span>
+        <div class="title">指标异常网站数量统计</div>
+        <div class="index-echar" id="index-echar"></div>
+      </div>
+      <div class="echart-box">
+        <span class="line"></span>
+        <span class="line"></span>
+        <div class="title">可用性告警数量统计</div>
+        <div class="usability" id="usability-echar"></div>
+      </div>
+    </div>
+    <div class="list">
+      <span class="line"></span>
+      <span class="line"></span>
+      <div class="header">
+        <div class="title">安全事件告警</div>
+        <div class="operation">
+          <span>告警数量：59</span>
+          <select name="" id="" class="my-select">
+            <option value="1">全部</option>
+            <option value="1">全部</option>
+            <option value="1">全部</option>
+          </select>
+          <select name="" id="" class="my-select">
+            <option value="1">今天</option>
+            <option value="1">今天</option>
+            <option value="1">今天</option>
+          </select>
+        </div>
+      </div>
+      <ul class="table-container">
+        <li class="table-item">
+          <div>
+            <span class="cell">类型</span>
+          </div>
+          <div>
+            <span class="cell">时间</span>
+          </div>
+          <div>
+            <span class="cell">项目</span>
+          </div>
+          <div>
+            <span class="cell">异常URL</span>
+          </div>
+          <div>
+            <span class="cell">等级</span>
+          </div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item severity">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+        <li class="table-item">
+          <div>敏感词异常</div>
+          <div>今日15：32</div>
+          <div>蓝盾科技有限公司</div>
+          <div>http://baidu.com</div>
+          <div>--</div>
+        </li>
+      </ul>
+      <div class="paging">
+        <span>上一页</span>
+        <span>下一页</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script src="./js/index/index.js"></script>
+<script>
+  // 加载滚动条
+  $(".table-container").mCustomScrollbar({
+    scrollButtons: {
+      enable: false
+    },
+    horizontalScroll: false,
+    advanced: {
+      updateOnBrowserResize: true,
+      updateOnContentResize: true,
+      autoExpandHorizontalScroll: true,
+      autoScrollOnFocus: true,
+      normalizeMouseWheelDelta: true
+    },
+    contentTouchScroll: true
+  });
+  // 声音按钮
+  $('#voice').on('click',function(){
+    $(this).toggleClass('close');
+  });
+
+  // 地图
+  var myChart = echarts.init(document.getElementById('map-echar'));
+
+  var data = [
+      {name: '青岛', value: 28},
+      {name: '厦门', value: 26},
+      {name: '汕尾', value: 26},
+      {name: '潮州', value: 46},
+      {name: '广州', value: 58},
+      {name: '延安', value: 48}
+  ];
+
+  var geoCoordMap = {
+      '青岛':[120.33,36.07],
+      '厦门':[118.1,24.46],
+      '汕尾':[115.375279,22.786211],
+      '潮州':[116.63,23.68],
+      '广州':[113.23,23.16],
+      '延安':[109.47,36.6]
+  };
+  var convertData = function (data) {
+      var res = [];
+      for (var i = 0; i < data.length; i++) {
+          var geoCoord = geoCoordMap[data[i].name];
+          if (geoCoord) {
+              res.push({
+                  name: data[i].name,
+                  value: geoCoord.concat(data[i].value)
+              });
+          }
+      }
+      return res;
+  };
+
+  option = {
+      tooltip : {
+        trigger: 'item',
+        formatter: function (params) {
+          if(typeof(params.value)[2] == "undefined"){
+          return params.name + '（异常网站个数：' + params.value +')';
+          }else{
+          return params.name + '（异常网站个数：' + params.value[2]+')';
+          }
+        }
+      },
+      geo: {
+          map: 'china',
+          label: {
+              emphasis: {
+                  show: false
+              }
+          },
+          layoutCenter: ['50%', '50%'],// 设置显示位置
+          layoutSize:'130%',// 设置地图大小
+          roam: true,
+          itemStyle: {
+              normal: {
+                  areaColor: '#090E2',
+                  borderColor: '#009fe8',
+                  opacity:0.8,
+                  // shadowColor: 'rgba(0, 0, 0, 0.5)',
+                  // shadowBlur: 10
+              },
+              emphasis: {
+                borderColor: '#4b0082',
+                areaColor:"#090E24",
+              }
+          }
+      },
+      series : [
+          {
+              name: '',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              data: convertData(data),
+              symbolSize: function (val) {
+                  return val[2] / 10;
+              },
+              showEffectOn: 'render',
+              rippleEffect: {
+                  brushType: 'stroke'
+              },
+              hoverAnimation: true,
+              label: {
+                  normal: {
+                      formatter: '{b}',
+                      position: 'right',
+                      show: true
+                  },
+                  emphasis: {
+                      show: true
+                  }
+              },
+              itemStyle: {
+                  normal: {
+                      color: '#f8b500',
+                      shadowBlur: 10,
+                      shadowColor: '#333'
+                  }
+              }
+          }
+      ]
+  };
+  myChart.setOption(option);
+  // 地图 E
+</script>
