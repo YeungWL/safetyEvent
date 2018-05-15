@@ -23,7 +23,7 @@ function index_echar_data(){
       dataType: "json",        //返回数据形式为json
       success: function (data) {
           if(data!=null){
-            index_option.xAxis[0].data=data.xAxis;
+            // index_option.xAxis[0].data=data.xAxis;
             index_option.series[0].data=data.seriesList[0].dataNumber;
             index_option.series[1].data=data.seriesList[1].dataNumber;
             index_option.series[2].data=data.seriesList[2].dataNumber;
@@ -37,6 +37,21 @@ function index_echar_data(){
       }
   });
 }
+
+var dayData = [];
+function GetDateStr(AddDayCount) { 
+  var dd = new Date(); 
+  dd.setDate(dd.getDate()-AddDayCount);//获取AddDayCount天前的日期 
+  var y = dd.getFullYear(); 
+  var m = dd.getMonth()+1;//获取当前月份的日期 
+  var d = dd.getDate(); 
+  return m+"-"+d; 
+}
+for(let i = 6; i >= 0; i--){
+  dayData.push(GetDateStr(i));
+}
+console.log(dayData);
+
 var index_echar = echarts.init(document.getElementById('index-echar'),'macarons');
 index_option = {
   tooltip : {
@@ -45,8 +60,8 @@ index_option = {
   grid: {
     x:10,
     y:15,
-    x2:20,
-    y2:30,
+    x2:40,
+    y2:10,
     containLabel: true,
     borderWidth:0
   },
@@ -59,23 +74,23 @@ index_option = {
     right:10
   },
   xAxis : [
-      {
-        splitLine:{show: false},
-        splitArea : {show : false},//保留网格区域
-          type : 'category',
-          boundaryGap: false,
-          data : [],
-          axisLabel:{
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          axisLine:{
-            lineStyle:{
-                color:'#fff'
-            }
+    {
+      splitLine: {show: false},
+      splitArea: {show : false},//保留网格区域
+        type : 'category',
+        boundaryGap: false,
+        data: dayData,
+        axisLabel:{
+          textStyle: {
+            color: '#fff'
           }
-      },
+        },
+        axisLine:{
+          lineStyle:{
+            color:'#fff'
+          }
+        }
+    },
   ],
   yAxis :{
     splitLine:{show: false},
@@ -94,32 +109,35 @@ index_option = {
     },
   series : [
       {
-          name:'DNS监控',
-          type:'line',
-          itemStyle : {  
-            normal : {  
-                lineStyle:{  
-                    color:'#CF097B'  
-                }  
-            }  
-          },  
-          data:[]
+        name:'DNS监控',
+        type:'line',
+        symbol: "image://../../images/icon01.png",
+        itemStyle : {  
+          normal : {  
+              lineStyle:{  
+                  color:'#CF097B'  
+              }  
+          }  
+        },  
+        data:[]
       },
       {
-          name:'篡改',
-          type:'line',
-          itemStyle : {  
-            normal : {  
-                lineStyle:{  
-                    color:'#F8C360'  
-                }  
-            }  
-          },
-          data:[]
+        name:'篡改',
+        type:'line',
+        symbol: "image://../../images/icon02.png",
+        itemStyle : {  
+          normal : {  
+              lineStyle:{  
+                  color:'#F8C360'  
+              }  
+          }  
+        },
+        data:[]
       },
       {
         name:'挂马',
         type:'line',
+        symbol: "image://../../images/icon00.png",
         itemStyle : {  
           normal : {  
               lineStyle:{  
@@ -132,6 +150,7 @@ index_option = {
       {
         name:'敏感词',
         type:'line',
+        symbol: "image://../../images/icon03.png",
         itemStyle : {  
           normal : {  
               lineStyle:{  
@@ -166,8 +185,8 @@ function usability_echar_data(){
   });
 }
 var usability_echar = echarts.init(document.getElementById('usability-echar'),'macarons');
+
 var usability_option = {
-  color: ['#3398DB'],
   tooltip : {
       trigger: 'axis',
       axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -177,7 +196,7 @@ var usability_option = {
   grid: {
     x:40,
     y:15,
-    x2:20,
+    x2:30,
     y2:30,
     // containLabel: true,
     borderWidth:0
@@ -187,7 +206,7 @@ var usability_option = {
         splitLine:{show: false},
         splitArea : {show : false},//保留网格区域
           type : 'category',
-          data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data : dayData,
           axisLabel:{
             textStyle: {
               color: '#f7f7f7'
@@ -195,7 +214,7 @@ var usability_option = {
           },
           axisLine:{
             lineStyle:{
-                color:'#f7f7f7'
+              color:'#f7f7f7'
             }
           }
       },
@@ -221,7 +240,28 @@ var usability_option = {
         {
         name:'直接访问',
         type:'bar',
-        data:[10, 52, 200, 334, 390, 330, 220]
+        barWidth:'25',
+        label: {
+          normal: {
+              show: true,
+              position: 'top',
+              textStyle: {
+                color: '#f7f7f7'
+              },
+          }
+        },
+        itemStyle: {
+          normal: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+            [
+                {offset: 0, color: '#1B70DF'},   
+                {offset: 1, color: '#19ADE6'}
+            ]
+          )
+          }
+        },
+        data:[10, 52, 200, 334, 211, 330, 220]
         }
     ]
 }
